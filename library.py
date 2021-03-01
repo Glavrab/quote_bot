@@ -35,6 +35,6 @@ def get_a_quote() -> str:
     filename = 'quotes.json'
     with open(filename) as file:
         file_with_quotes = json.load(file)
-        number_of_quote = random.randint(1, 7)
+        number_of_quote = random.randint(0, 6)
         quote = file_with_quotes[number_of_quote]
         return quote
