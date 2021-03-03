@@ -12,7 +12,7 @@ def parsing_data() -> dict:
     message_info = request.get_json()
     message = message_info['message']
     chat_info = message['chat']
-    chat_id = chat_info['chat_id']
+    chat_id = chat_info['id']
     if 'text' in message:
         text = message['text']
         data = {'chat_id': chat_id, 'text': text}
