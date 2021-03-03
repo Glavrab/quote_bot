@@ -4,7 +4,7 @@ import json
 import random
 
 
-URL = 'https://api.telegram.org/bot1666792495:AAGiLEJHfILirO4oLnLfipH2avv4aa9rTv0'
+URL = 'https://api.telegram.org/bot1666792495:AAGiLEJHfILirO4oLnLfipH2avv4aa9rTv0/'
 
 
 def parsing_data() -> dict:
