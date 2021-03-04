@@ -1,7 +1,9 @@
 from flask import Flask, request
-from library import (parsing_data,
-                     send_message,
-                     get_a_quote)
+from library import (
+    parsing_data,
+    send_message,
+    get_a_quote
+)
 
 
 app = Flask(__name__)
