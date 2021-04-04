@@ -1,24 +1,24 @@
-from flask import Flask, request
-from library import (
-    parsing_data,
-    send_message,
-    get_a_quote
-)
+from aiogram import (
+    Bot,
+    Dispatcher,
+    types,
+    executor)
+from library import get_a_quote
 
 
-app = Flask(__name__)
+WEBHOOK = 'https://d7d97f0d5183.ngrok.io'
+API_TOKEN = '1666792495:AAGiLEJHfILirO4oLnLfipH2avv4aa9rTv0'
+bot = Bot(API_TOKEN)
+dp = Dispatcher(bot)
 
 
-@app.route('/', methods=['POST'])
-def index():
-    data = request.get_json()
-    if parsing_data(data=data):
-        data = parsing_data(data=data)
-        chat_id = data['chat_id']
-        text = get_a_quote()
-        send_message(chat_id=chat_id, text=text)
-    return 'not done'
+@dp.message_handler()
+async def send_quote(message: types.Message) -> None:
+    """Handle sending a quote to user"""
+    quote_to_send = get_a_quote()
+    await message.answer(quote_to_send)
 
 
 if __name__ == '__main__':
-    app.run(port=443, ssl_context='adhoc')
+    bot.set_webhook(WEBHOOK)
+    executor.start_polling(dp, skip_updates=True)
